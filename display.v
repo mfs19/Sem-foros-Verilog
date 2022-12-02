@@ -1,18 +1,18 @@
 //insere no display o valor do tempo
-module 7SEG(output reg [7:0] z, input [2:0] s);
+module SEG7(output reg [6:0] o, input [2:0] i);
 
 always @ * begin
-    case(s)
-        0 : z = ~8'b00111111;
-        1 : z = ~8'b00000110;
-        2 : z = ~8'b01011011;
-        3 : z = ~8'b01001111; 
-        4 : z = ~8'b01100110; 
-        5 : z = ~8'b01101101; 
-        6 : z = ~8'b01111101;
-        7 : z = ~8'b00000111;
-        8 : z = ~8'b01111111; 
-        9 : z = ~8'b01101111; 
+    case(i)
+        0 : o = 8'b0111111;
+        1 : o = 8'b0000110;
+        2 : o = 8'b1011011;
+        3 : o = 8'b1001111; 
+        4 : o = 8'b1100110; 
+        5 : o = 8'b1101101; 
+        6 : o = 8'b1111101;
+        7 : o = 8'b0000111;
+        8 : o = 8'b1111111; 
+        9 : o = 8'b1101111; 
     endcase
 end
 endmodule
