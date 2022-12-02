@@ -6,7 +6,7 @@ module Traffic_Light_Controller(
     output reg [2:0]light_F1,
     output reg [2:0]light_F2,
     output reg [2:0]light_F6,
-    output reg [2:0]light_D9,
+    output reg [2:0]light_F9,
     output reg [2:0]light_P1,
     output reg [2:0]light_P2,
     output reg [2:0]light_P3,
