@@ -1,8 +1,8 @@
 module ControladorSemaforo(
   input clk, reset,
-  input Sa, Sb
-  output reg Ra, Ya, Ga
-  output reg Rb, Yb, Gb
+  input Sa, Sb //sensores de carros
+  output reg Ra, Ya, Ga //Ra = vermelho para rua a, Ya = amarelo para rua a, Ga = verde para rua a
+  output reg Rb, Yb, Gb // similar ao anterior
 );
   
   reg [3:0] state_reg, state_next;
@@ -17,7 +17,7 @@ module ControladorSemaforo(
         state_reg <= state_next;
     end
   
-  
+  //maquina de estados
   always @ (*)
     begin 
       state_next = state_reg;
