@@ -6,7 +6,7 @@ module ControladorSemaforo(
 );
   
   reg [3:0] state_reg, state_next;
-  localparam s0=0,s1=1,s2=2,s3=3,s4=4,d5=5,d6=6,s7=7,s8=8,s9=9,s10=10,s11=11,s12=12; //para cada estado, se atribui 10 segundos
+  localparam s0=0,s1=1,s2=2,s3=3,s4=4,s5=5,s6=6,s7=7; //para cada estado, se atribui 10 segundos
   
   
   always @(posedge clk, negedge reset)
@@ -22,18 +22,18 @@ module ControladorSemaforo(
     begin 
       state_next = state_reg;
       case(state_reg)
-        s0,s1,s2,s3,s4,s6,s7,s8,s9,s10:
+        s0,s1,s3,s4,s5:
           state_next = state_reg + 1;
-        s5:
+        s2:
           if(~Sb)
-            state_next = s5;
-        else state_next = s6;
-        s11:
+            state_next = s2;
+        else state_next = s3;
+        s6:
           if(~Sa & Sb)
-            state_next = s11;
+            state_next = s6;
         else if(Sa|~Sb)
-          state_next = s12;
-        s12: state_next = s0;
+          state_next = s7;
+        s7: state_next = s0;
       endcase
     end
   
@@ -47,22 +47,22 @@ module ControladorSemaforo(
       Ab = 1'b0;
       Veb = 1'b0;
       case(state_reg)
-        s0,s1,s2,s3,s4,s5:
+        s0,s1,s2:
           begin
             Vea = 1'b1;
             Vb = 1'b1;
           end
-        s6:
+        s3:
           begin
             Aa = 1'b1;
             Vb = 1'b1;
           end
-        s7,s8,s9,s10,s11:
+        s4,s5,s6:
           begin
             Va = 1'b1;
             Ab = 1'b1;
           end
-        s12:
+        s7:
           begin
             Va = 1'b1;
             Ab = 1'b1;
