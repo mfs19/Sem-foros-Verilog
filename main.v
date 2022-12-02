@@ -20,8 +20,8 @@ module ControladorSemaforo(
     );
     
     parameter  S1=0, S2=1, S3 =2, S4=3, S5=4,S6=5;
-    reg [3:0]count;
-    reg[2:0] ps;
+    reg [3:0]contador;
+    reg[2:0] estado;
     localparam Vermelho = 3'b100, Verde = 3'b001, Amarelo = 3'b010;
     
    
@@ -30,87 +30,87 @@ module ControladorSemaforo(
         begin
         if(rst==1)
         begin
-        ps<=S1;
-        count<=0;
+        estado<=S1;
+        contador<=0;
         end
         else
         
-            case(ps)
-                S1: if(count<30)
+            case(estado)
+                S1: if(contador<30)
                         begin
-                        ps<=S1;
-                        count<=count+1;
+                        estado<=S1;
+                        contador<=contador+1;
                         end
                     else
                         begin
-                        ps<=S2;
-                        count<=0;
+                        estado<=S2;
+                        contador<=0;
                         end
-                S2: if(count<3)
+                S2: if(contador<3)
                         begin
-                        ps<=S2;
-                        count<=count+1;
+                        estado<=S2;
+                        contador<=contador+1;
                         end
 
                     else
                         begin
-                        ps<=S3;
-                        count<=0;
+                        estado<=S3;
+                        contador<=0;
                         end
-                S3: if(count<30)
+                S3: if(contador<30)
                         begin
-                        ps<=S3;
-                        count<=count+1;
+                        estado<=S3;
+                        contador<=contador+1;
                         end
 
                     else
                         begin
-                        ps<=S4;
-                        count<=0;
+                        estado<=S4;
+                        contador<=0;
                         end
-                S4:if(count<3)
+                S4:if(contador<3)
                         begin
-                        ps<=S4;
-                        count<=count+1;
+                        estado<=S4;
+                        contador<=contador+1;
                         end
 
                     else
                         begin
-                        ps<=S5;
-                        count<=0;
+                        estado<=S5;
+                        contador<=0;
                         end
-                S5:if(count<15)
+                S5:if(contador<15)
                         begin
-                        ps<=S5;
-                        count<=count+1;
+                        estado<=S5;
+                        contador<=contador+1;
                         end
 
                     else
                         begin
-                        ps<=S6;
-                        count<=0;
+                        estado<=S6;
+                        contador<=0;
                         end
 
-                S6:if(count<3)
+                S6:if(contador<3)
                         begin
-                        ps<=S6;
-                        count<=count+1;
+                        estado<=S6;
+                        contador<=contador+1;
                         end
 
                     else
                         begin
-                        ps<=S1;
-                        count<=0;
+                        estado<=S1;
+                        contador<=0;
                         end
-                default: ps<=S1;
+                default: estado<=S1;
                 endcase
             end   
 
     //Estados dos faróis
-            always@(ps)    
+    always@(estado)    
             begin
                 
-                case(ps)
+                case(estado)
                      
                     S1:
                     begin
