@@ -1,7 +1,7 @@
 module ControladorSemaforo(
   input clk, reset,
   input Sa, Sb //sensores de carros
-  output reg Va, Aa, Vea, Vap, Aap, Veap; //Va = vermelho para rua a, Aa = amarelo para rua a, Vea = verde para rua a
+  output reg Va, Aa, Vea, Vap, Aap, Veap; //Va = vermelho para rua a, Aa = amarelo para rua a, Vea = verde para rua a, Vap = vermelho para pedestre cruzar a rua a
   output reg Vb, Ab, Veb, Vbp, Abp, Vebp; // similar ao anterior
 );
   
