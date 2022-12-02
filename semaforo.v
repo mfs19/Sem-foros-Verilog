@@ -1,12 +1,12 @@
 module ControladorSemaforo(
   input clk, reset,
   input Sa, Sb //sensores de carros
-  output reg Ra, Ya, Ga //Ra = vermelho para rua a, Ya = amarelo para rua a, Ga = verde para rua a
-  output reg Rb, Yb, Gb // similar ao anterior
+  output reg Va, Aa, Vea //Va = vermelho para rua a, Aa = amarelo para rua a, Vea = verde para rua a
+  output reg Vb, Ab, Veb // similar ao anterior
 );
   
   reg [3:0] state_reg, state_next;
-  localparam s0 = 0, s1 =1, s2=2,s3=3,s4=4,d5=5,d6=6,s7=7,s8=8,s9=9,s10=10,s11=11,s12=12;
+  localparam s0=0,s1=1,s2=2,s3=3,s4=4,d5=5,d6=6,s7=7,s8=8,s9=9,s10=10,s11=11,s12=12; //para cada estado, se atribui 10 segundos
   
   
   always @(posedge clk, negedge reset)
@@ -40,27 +40,32 @@ module ControladorSemaforo(
   //saidas
   always @ (*)
     begin 
-      Ra = 1'b0;
-      Ya = 1'b0;
-      Ga = 1'b0;
-      Rb = 1'b0;
-      Yb = 1'b0;
-      Gb = 1'b0;
+      Va = 1'b0;
+      Aa = 1'b0;
+      Vea = 1'b0;
+      Vb = 1'b0;
+      Ab = 1'b0;
+      Veb = 1'b0;
       case(state_reg)
         s0,s1,s2,s3,s4,s5:
           begin
-            Ga = 1'b1;
-            Rb = 1'b1;
+            Vea = 1'b1;
+            Vb = 1'b1;
           end
         s6:
           begin
-            Ya = 1'b1;
-            Rb = 1'b1;
+            Aa = 1'b1;
+            Vb = 1'b1;
           end
         s7,s8,s9,s10,s11:
           begin
-            Ra = 1'b1;
-            Yb = 1'b1;
+            Va = 1'b1;
+            Ab = 1'b1;
+          end
+        s12:
+          begin
+            Va = 1'b1;
+            Ab = 1'b1;
           end
       endcase
     end
