@@ -3,16 +3,27 @@ module Traffic_Light_Controller(
 
 
     input clk,rst,
-    output reg [2:0]light_M1,
-    output reg [2:0]light_S,
-    output reg [2:0]light_MT,
-    output reg [2:0]light_M2
+    output reg [2:0]light_F1,
+    output reg [2:0]light_F2,
+    output reg [2:0]light_F6,
+    output reg [2:0]light_D9,
+    output reg [2:0]light_P1,
+    output reg [2:0]light_P2,
+    output reg [2:0]light_P3,
+    output reg [2:0]light_P4,
+    output reg [2:0]light_P5,
+    output reg [2:0]light_P6,
+    output reg [2:0]light_P7,
+    output reg [2:0]light_P8,
+    output reg [2:0]light_P9,
+    output reg [2:0]light_P10,
     );
     
     parameter  S1=0, S2=1, S3 =2, S4=3, S5=4,S6=5;
     reg [3:0]count;
     reg[2:0] ps;
-
+    localparam Vermelho = 3'b100, Verde = 3'b001, Amarelo = 3'b010;
+    
    
     
     always@(posedge clk or posedge rst)
@@ -24,11 +35,8 @@ module Traffic_Light_Controller(
         end
         else
         
-      
-       
-            
             case(ps)
-                S1: if(count<7)
+                S1: if(count<20)
                         begin
                         ps<=S1;
                         count<=count+1;
@@ -38,7 +46,7 @@ module Traffic_Light_Controller(
                         ps<=S2;
                         count<=0;
                         end
-                S2: if(count<2)
+                S2: if(count<3)
                         begin
                         ps<=S2;
                         count<=count+1;
@@ -49,7 +57,7 @@ module Traffic_Light_Controller(
                         ps<=S3;
                         count<=0;
                         end
-                S3: if(count<5)
+                S3: if(count<15)
                         begin
                         ps<=S3;
                         count<=count+1;
@@ -60,7 +68,7 @@ module Traffic_Light_Controller(
                         ps<=S4;
                         count<=0;
                         end
-                S4:if(count<2)
+                S4:if(count<3)
                         begin
                         ps<=S4;
                         count<=count+1;
@@ -105,24 +113,34 @@ module Traffic_Light_Controller(
                      
                     S1:
                     begin
-                       light_M1<=3'b001;
-                       light_M2<=3'b001;
-                       light_MT<=3'b100;
-                       light_S<=3'b100;
+                       light_F1<=3'b001;
+                       light_P2<=3'b001;
+                       light_P4<=3'b001;
+                       light_F2<=3'b100;
+                       light_P1<=3'b100;
+                       light_P3<=3'b100;
+                       light_P5<=3'b100;
+                       light_F6<=3'b001;
+                       light_P7<=3'b001;
+                       light_P9<=3'b001; 
+                       light_F9<=3'b100;
+                       light_P6<=3'b100;
+                       light_P8<=3'b100;
+                       light_P10<=3'b100; 
                     end
                     S2:
                     begin 
-                       light_M1<=3'b001;
-                       light_M2<=3'b010;
-                       light_MT<=3'b100;
-                       light_S<=3'b100;
+                       light_F1<=3'b001;
+                       light_F2<=3'b010;
+                       light_F6<=3'b010;
+                       light_F9<=3'b100;
                     end
                     S3:
                     begin
-                       light_M1<=3'b001;
-                       light_M2<=3'b100;
-                       light_MT<=3'b001;
-                       light_S<=3'b100;
+                       light_F1<=3'b001;
+                       light_F2<=3'b100;
+                       light_F6<=3'b100;
+                       light_F9<=3'b001;
                     end
                     S4:
                     begin
