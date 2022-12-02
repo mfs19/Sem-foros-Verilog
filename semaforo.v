@@ -37,7 +37,7 @@ module ControladorSemaforo(
       endcase
     end
   
-  
+  //saidas
   always @ (*)
     begin 
       Ra = 1'b0;
