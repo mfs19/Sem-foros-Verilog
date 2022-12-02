@@ -27,7 +27,7 @@ module ControladorSemaforo(
     
     
     
-    display();
+    display s1 (.o(o), .i(i));
    
     //temporizador para cada estado
     always@(posedge clk or posedge rst)
@@ -44,7 +44,7 @@ module ControladorSemaforo(
                         begin
                         estado<=S1;
                         contador<=contador+1;
-                        display(seg_n, contador);
+                        display s1 (seg_n, contador);
                         end
                     else
                         begin
