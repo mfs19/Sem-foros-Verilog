@@ -2,6 +2,7 @@
 module ControladorSemaforo(
 
 
+    
     input clk,rst,
     output reg [2:0]light_F1,
     output reg [2:0]light_F2,
@@ -24,6 +25,9 @@ module ControladorSemaforo(
     reg[2:0] estado;
     localparam Vermelho = 3'b100, Verde = 3'b001, Amarelo = 3'b010;
     
+    
+    
+    display();
    
     //temporizador para cada estado
     always@(posedge clk or posedge rst)
@@ -40,6 +44,7 @@ module ControladorSemaforo(
                         begin
                         estado<=S1;
                         contador<=contador+1;
+                        display(seg_n, contador);
                         end
                     else
                         begin
