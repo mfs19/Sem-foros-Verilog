@@ -36,7 +36,7 @@ module Traffic_Light_Controller(
         else
         
             case(ps)
-                S1: if(count<20)
+                S1: if(count<30)
                         begin
                         ps<=S1;
                         count<=count+1;
@@ -57,7 +57,7 @@ module Traffic_Light_Controller(
                         ps<=S3;
                         count<=0;
                         end
-                S3: if(count<20)
+                S3: if(count<30)
                         begin
                         ps<=S3;
                         count<=count+1;
