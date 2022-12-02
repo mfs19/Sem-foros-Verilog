@@ -27,7 +27,7 @@ module ControladorSemaforo(
     
     
     
-    display s1 (.o(o), .i(i));
+    display s1 (.o(o), .i(i)); //display para identificar o tempo do semáforo
    
     //temporizador para cada estado
     always@(posedge clk or posedge rst)
