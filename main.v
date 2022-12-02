@@ -1,5 +1,5 @@
 
-module Traffic_Light_Controller(
+module ControladorSemaforo(
 
 
     input clk,rst,
