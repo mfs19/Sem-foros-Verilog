@@ -55,6 +55,7 @@ module ControladorSemaforo(
                         begin
                         estado<=S2;
                         contador<=contador+1;
+                        display s1 (seg_n, contador);
                         end
 
                     else
@@ -66,6 +67,7 @@ module ControladorSemaforo(
                         begin
                         estado<=S3;
                         contador<=contador+1;
+                        display s1 (seg_n, contador);
                         end
 
                     else
@@ -77,6 +79,7 @@ module ControladorSemaforo(
                         begin
                         estado<=S4;
                         contador<=contador+1;
+                        display s1 (seg_n, contador);
                         end
 
                     else
@@ -88,6 +91,7 @@ module ControladorSemaforo(
                         begin
                         estado<=S5;
                         contador<=contador+1;
+                        display s1 (seg_n, contador);
                         end
 
                     else
@@ -100,6 +104,7 @@ module ControladorSemaforo(
                         begin
                         estado<=S6;
                         contador<=contador+1;
+                        display s1 (seg_n, contador);
                         end
 
                     else
