@@ -25,7 +25,7 @@ module Traffic_Light_Controller(
     localparam Vermelho = 3'b100, Verde = 3'b001, Amarelo = 3'b010;
     
    
-    
+    //temporizador para cada estado
     always@(posedge clk or posedge rst)
         begin
         if(rst==1)
@@ -57,7 +57,7 @@ module Traffic_Light_Controller(
                         ps<=S3;
                         count<=0;
                         end
-                S3: if(count<15)
+                S3: if(count<20)
                         begin
                         ps<=S3;
                         count<=count+1;
@@ -79,7 +79,7 @@ module Traffic_Light_Controller(
                         ps<=S5;
                         count<=0;
                         end
-                S5:if(count<3)
+                S5:if(count<15)
                         begin
                         ps<=S5;
                         count<=count+1;
@@ -91,7 +91,7 @@ module Traffic_Light_Controller(
                         count<=0;
                         end
 
-                S6:if(count<2)
+                S6:if(count<3)
                         begin
                         ps<=S6;
                         count<=count+1;
@@ -106,6 +106,7 @@ module Traffic_Light_Controller(
                 endcase
             end   
 
+    //Estados dos faróis
             always@(ps)    
             begin
                 
@@ -130,45 +131,105 @@ module Traffic_Light_Controller(
                     end
                     S2:
                     begin 
-                       light_F1<=3'b001;
-                       light_F2<=3'b010;
+                       light_F1<=3'b010;
+                       light_P2<=3'b010;
+                       light_P4<=3'b010;
+                       light_F2<=3'b100;
+                       light_P1<=3'b100;
+                       light_P3<=3'b100;
+                       light_P5<=3'b100;
                        light_F6<=3'b010;
+                       light_P7<=3'b010;
+                       light_P9<=3'b010; 
                        light_F9<=3'b100;
+                       light_P6<=3'b100;
+                       light_P8<=3'b100;
+                       light_P10<=3'b100; 
                     end
                     S3:
                     begin
-                       light_F1<=3'b001;
-                       light_F2<=3'b100;
+                       light_F1<=3'b100;
+                       light_P2<=3'b100;
+                       light_P4<=3'b100;
+                       light_F2<=3'b001;
+                       light_P1<=3'b001;
+                       light_P3<=3'b001;
+                       light_P5<=3'b100;
                        light_F6<=3'b100;
+                       light_P7<=3'b100;
+                       light_P9<=3'b100; 
                        light_F9<=3'b001;
+                       light_P6<=3'b001;
+                       light_P8<=3'b001;
+                       light_P10<=3'b100;
                     end
                     S4:
                     begin
-                       light_M1<=3'b010;
-                       light_M2<=3'b100;
-                       light_MT<=3'b010;
-                       light_S<=3'b100;
+                       light_F1<=3'b100;
+                       light_P2<=3'b100;
+                       light_P4<=3'b100;
+                       light_F2<=3'b010;
+                       light_P1<=3'b010;
+                       light_P3<=3'b010;
+                       light_P5<=3'b100;
+                       light_F6<=3'b100;
+                       light_P7<=3'b100;
+                       light_P9<=3'b100; 
+                       light_F9<=3'b010;
+                       light_P6<=3'b010;
+                       light_P8<=3'b010;
+                       light_P10<=3'b100;
                     end
                     S5:
                     begin
-                       light_M1<=3'b100;
-                       light_M2<=3'b100;
-                       light_MT<=3'b100;
-                       light_S<=3'b001;
+                       light_F1<=3'b100;
+                       light_P2<=3'b001;
+                       light_P4<=3'b001;
+                       light_F2<=3'b100;
+                       light_P1<=3'b001;
+                       light_P3<=3'b001;
+                       light_P5<=3'b001;
+                       light_F6<=3'b100;
+                       light_P7<=3'b001;
+                       light_P9<=3'b001; 
+                       light_F9<=3'b100;
+                       light_P6<=3'b001;
+                       light_P8<=3'b001;
+                       light_P10<=3'b001;
                     end
                     S6:
                     begin 
-                       light_M1<=3'b100;
-                       light_M2<=3'b100;
-                       light_MT<=3'b100;
-                       light_S<=3'b010;
+                       light_F1<=3'b100;
+                       light_P2<=3'b001;
+                       light_P4<=3'b001;
+                       light_F2<=3'b100;
+                       light_P1<=3'b010;
+                       light_P3<=3'b010;
+                       light_P5<=3'b010;
+                       light_F6<=3'b100;
+                       light_P7<=3'b001;
+                       light_P9<=3'b001; 
+                       light_F9<=3'b100;
+                       light_P6<=3'b010;
+                       light_P8<=3'b010;
+                       light_P10<=3'b010;
                     end
                     default:
                     begin 
-                       light_M1<=3'b000;
-                       light_M2<=3'b000;
-                       light_MT<=3'b000;
-                       light_S<=3'b000;
+                       light_F1<=3'b000;
+                       light_P2<=3'b000;
+                       light_P4<=3'b000;
+                       light_F2<=3'b000;
+                       light_P1<=3'b000;
+                       light_P3<=3'b000;
+                       light_P5<=3'b000;
+                       light_F6<=3'b000;
+                       light_P7<=3'b000;
+                       light_P9<=3'b000; 
+                       light_F9<=3'b000;
+                       light_P6<=3'b000;
+                       light_P8<=3'b000;
+                       light_P10<=3'b000;
                     end
                     endcase
             end                
